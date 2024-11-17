@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
+
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comments_params)
     @comment.user = current_user
@@ -22,5 +25,10 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:description)
   end
 
+  def authenticate_user!
+    unless user_signed_in?
+      redirect_to root_path, alert: 'Debes iniciar sesión para comentar.'
+    end
+  end
 
 end

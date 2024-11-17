@@ -11,7 +11,6 @@
 Post.destroy_all
 User.destroy_all
 
-
 ## Seed Users
 
 emails = [
@@ -32,22 +31,17 @@ emails = [
 users = []
 
 emails.each do |email|
-    
     password = "password"
     users << {
         email: email,
         password: password,
         password_confirmation: password,
     }
-
 end
 
+profile_picture_files = Dir[Rails.root.join("public/profile_pictures/*.jpeg")]
 users.each do |attributes|
     user = User.create!(attributes)
-
-    # buscamos las imagenes
-    profile_picture_files = Dir[Rails.root.join("public/profile_pictures/*.jpeg")]
-    
     # seleccionamos una imagen aleatoria y la borramos
     # para evitar la repeticion
     if profile_picture_files.any?
@@ -61,37 +55,38 @@ users.each do |attributes|
     else
         puts "No img available."
     end
-
 end
 
 ## Seed Posts
 
+post_images_files = Dir[Rails.root.join("public/images/*.jpeg")]
 6.times do |i|
     user = User.find_by(admin: true)
-
     post = Post.create!(
         description: Faker::Quote.famous_last_words,
         user: user,
         )
+    if post_images_files.any?
+        selected_picture = post_images_files.sample
+        post_images_files.delete(selected_picture)
 
-    post.image.attach(
-        io: File.open(Rails.root.join("public/images/#{i+1}.jpeg")),
-        filename: "post-#{post.id}-user-#{user.id}.jpeg"
+        post.image.attach(
+        io: File.open(selected_picture),
+        filename: File.basename(selected_picture)
         )
-
+    else
+        puts "No img available."
+    end
 end
 
 ## Seed Comments
 
 30.times do |i|
-
     post = Post.all.sample
     user = User.all.reject { |u| u == post.user }.sample
-
     Comment.create!(
         description: Faker::Lorem.sentence,
         post: post,
         user: user,
     )
-
 end

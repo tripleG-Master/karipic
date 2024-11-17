@@ -42,10 +42,10 @@ Sigue estos pasos para configurar el proyecto en tu máquina local:
 
 ## Ejecución
 
-4. Dentro de la carpeta del proyecto, ejecuta los siguientes comandos
+5. Dentro de la carpeta del proyecto, ejecuta los siguientes comandos
   - rails s
 
-# Implementación
+## Implementación
 
-Dentro del archivo seed.rb estan los usuarios para realizar pruebas. Puedesregistrarte con tu propio email y password para realizar los mismos test. Solo el usuario "admin" puede realizar posts, los demas solo pueden realizar comentarios.
+Dentro del archivo seed.rb estan los usuarios para realizar pruebas. Puedes registrarte con tu propio email y password para realizar los mismos test. Solo el usuario "admin" puede realizar posts, los demas solo pueden realizar comentarios.
 
