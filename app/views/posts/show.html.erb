@@ -1,0 +1,60 @@
+<p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
+
+
+<section class="container-fluid">
+  <div class="col-10 col-md-6 mx-auto">
+    <%= render @post %>
+  </div>
+</section>
+
+<h2 class="display-6 text-center my-3">Comments</h2> 
+
+<section class="container-fluid py-3">
+
+  <div class="col-10 col-md-6 mx-auto">
+    <%= form_with(model: [@post,@comment], local:true) do |f| %>
+      <div class="mb-3">
+        <%= f.label :description, class:"form-label"%>
+        <%= f.text_area :description, class:"form-control", placeholder:"Add a comment" %>
+      </div>
+      <div class="mb-3">
+        <%= f.submit "Add a comment", class:"btn btn-primary" %>  
+      </div>
+    <%end%>
+  </div>
+
+</section>
+
+<section class="container-fluid py-3">
+
+  <% @comments.each do |comment| %>
+  <div class="card col-10 col-md-6 mx-auto">
+
+    <div class="card-body">
+      <p class="card-text">
+        <%= image_tag comment.user.profile_picture, 
+            class:"rounded-circle", 
+            style:"max-width:32px;" %>
+        <small><%= comment.user.email %></small> says:
+        <br>
+        <%= comment.description %>
+      </p>
+    </div>
+  
+  </div>
+  
+  <% end %>
+
+</section>    
+
+
+<script defer>
+  window.onload =()=>{
+  
+    const toastElList = document.querySelectorAll('.toast')
+    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
+
+  }
+  
+</script>

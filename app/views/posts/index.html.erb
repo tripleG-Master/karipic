@@ -1,0 +1,17 @@
+
+<% content_for :title, "Posts" %>
+
+<h1 class="display-3 text-center">My Life</h1>
+
+<section class="d-flex flex-wrap justify-content-center gap-3">
+
+  <% @posts.each do |post| %>
+    <div class="col-10 col-md-3">
+      <%= link_to post_path(post), class:"text-decoration-none text-black" do %>    
+        <%= render "post", post: post%>
+      <%end%>
+    </div>
+  <%end%>
+
+</section>
+

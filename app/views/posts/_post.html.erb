@@ -1,0 +1,15 @@
+<div class="card text-dark bg-light">
+    <%= image_tag post.image , class:"card-img-top", alt:"Not available"%>
+    <div class="card-body">
+      <div class="d-flex justify-content-start gap-2">
+        <%= image_tag post.user.profile_picture,
+            class:"rounded-circle",
+            style:"width:32px;" %>
+
+        <small class=""> @<%= post.user.email %></small>
+      </div>
+      <h4 class="card-title">
+        <%= post.description%>
+      </h4>
+    </div>  
+</div>
