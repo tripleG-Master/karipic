@@ -12,13 +12,8 @@ Sigue estos pasos para configurar el proyecto en tu máquina local:
   - default: &default 
     - username: tu_usuario 
     - password: tu_contraseña
-  
-3. Dentro de la carpeta del proyecto, ejecuta los siguientes comandos
-  - rails db:create 
-  - rails db:migrate 
-  - rails db:seed
 
-4. El proyecto utiliza Amazon S3 bucket para almacenar y disponibilizar las imagenes. Necesitas agregar las credenciales de S3.
+3. El proyecto utiliza Amazon S3 bucket para almacenar y disponibilizar las imagenes. Necesitas agregar las credenciales de S3.
 
   - Ejecuta en la terminal, segun tu sistema operativo:  
     
@@ -39,6 +34,12 @@ Sigue estos pasos para configurar el proyecto en tu máquina local:
     - aws:
         - access_key_id: "access_key_id"
         - secret_access_key: "secret_access_key"
+  
+4. Dentro de la carpeta del proyecto, ejecuta los siguientes comandos
+  - rails db:create 
+  - rails db:migrate 
+  - rails db:seed (OPTIONAL)
+
 
 ## Ejecución
 

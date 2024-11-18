@@ -28,7 +28,7 @@ bucket.objects.each(&:delete)
 
 puts "Records deleted"
 
-if !true
+if true
 
     puts "Creating records..."
 
