@@ -12,7 +12,7 @@ class User < ApplicationRecord
   before_create :set_admin
   
   def set_admin
-    if User.count.zero?
+    if User.where(admin: true).count.zero?
       self.admin = true
     else
       self.admin = false

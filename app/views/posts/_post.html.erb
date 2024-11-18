@@ -11,5 +11,18 @@
       <h4 class="card-title">
         <%= post.description%>
       </h4>
+      <% if controller_name == 'posts' && action_name == 'show' && current_user&.admin? %>
+      <div class="d-flex justify-content-end mt-3">
+        <%= link_to 'Editar', edit_post_path(post), class: 'btn btn-primary me-2' %>
+        <%= button_to 'Borrar',
+          post_path(post), 
+          method: :delete, 
+          class: 'btn btn-danger',
+          data: {
+            turbo_confirm: "Sure?"
+          }
+        %>
+      </div>
+    <% end %>
     </div>  
 </div>
