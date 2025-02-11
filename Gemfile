@@ -62,4 +62,4 @@ gem "faker", "~> 3.5"
 
 gem "aws-sdk-s3", require: false
 
-gem "image_processing", "~> 1.13"
+gem "image_processing", "~> 1.14"
